@@ -1,0 +1,20 @@
+var myApp = angular.module('myApp', []);
+myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+    console.log("Hello World from controller");
+
+// "/contactlist" = route that we are going to get data from.
+// ".success(function(respsonse)" what to do when it gets back this data.
+// "$scope.contactlist = respsonse;" puts data into HTML filw in our browser
+  $http({
+  		method : 'GET',
+  		url : '/contactlist'
+
+		}).then(function(response) {
+    
+    		console.log("I got the data I requested");
+    		$scope.contactlist = response.data;
+ }, function(error){
+ 	console.log("Something wrong nigga!");
+ });
+
+}]);﻿
